@@ -7,17 +7,9 @@
 const char* ssid = "BitHacks";
 const char* password = "BitHacks2025!";
 
-//const char* botToken = "7751602194:AAEg3IcfuZ7sM-VSvIDaTyiKbVjVwd-KcYE";
 const int motionSensorPin = 5;  // GPIO pin for PIR sensor
 
 WiFiClientSecure client;
-//UniversalTelegramBot bot(botToken, client);
-
-//String chat_id = "8004855340";
-
-//bool motionDetected = false;
-//unsigned long lastTimeMotionDetected = 0;
-//const unsigned long motionCooldown = 30000; // 30 seconds
 
 const int motionThreshold = 3;            // How many detections to trigger alert
 const unsigned long detectionWindow = 10000; // 10 seconds in milliseconds
@@ -63,7 +55,6 @@ void loop() {
   if (windowActive && (millis() - windowStartTime >= detectionWindow)) {
     if (motionCount >= motionThreshold) {
       Serial.println("Multiple motions detected — sending alert!");
-     // bot.sendMessage(chat_id, "Motion detected multiple times in short interval!", "");
 
       url_open();
       delay(10000); //10 sec buffer between alerts
